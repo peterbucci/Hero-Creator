@@ -20,13 +20,19 @@ public class Mage extends Hero implements Armable {
   private static final int MAX_INTELLIGENCE = 10;
   private static final int MAX_WISDOM = 8;
   private static final int MAX_CHARISMA = 7;
-
+  // MIN and MAX values for age
   private static final int MIN_AGE = 1;
   private static final int MAX_AGE = 100;
+  // Property specific to Mage
+  private StatValue age; // This is the age of the mage
 
-  private StatValue age;
-
+  /**
+   * This constructor initializes the Mage object with the specified values.
+   * @param name The name of the mage
+   * @param age The age of the mage
+   */
   public Mage(String name, int age) {
+    // Call the super constructor
     super(
       name,
       MIN_STRENGTH,
@@ -42,17 +48,30 @@ public class Mage extends Hero implements Armable {
       MIN_CHARISMA,
       MAX_CHARISMA
     );
+    // Set the age property
     this.age = new StatValue("Age", age, MIN_AGE, MAX_AGE);
   }
 
+  /**
+   * This constructor initializes the Mage object with default values.
+   */
   public Mage() {
+    // Call the other constructor
     this("Mage", MIN_AGE);
   }
 
+  /**
+   * This method returns the age of the mage.
+   * @return The age of the mage
+   */
   public StatValue getAge() {
     return age;
   }
 
+  /**
+   * This method sets the age of the mage.
+   * @param age The age of the mage
+   */
   public void setAge(int age) {
     try {
       this.age.setValue(age);
@@ -61,6 +80,11 @@ public class Mage extends Hero implements Armable {
     }
   }
 
+  /**
+   * This method allows the mage to wield a weapon as long as it is a spell.
+   * @param weapon The weapon to wield
+   * @return A string indicating the weapon the mage is wielding or that the mage cannot wield the weapon.
+   */
   @Override
   public String wieldWeapon(Weapon weapon) {
     if (weapon.getType() == Weapon.Type.SPELL) {
@@ -72,6 +96,10 @@ public class Mage extends Hero implements Armable {
     }
   }
 
+  /**
+   * This method returns a string representation of the Mage object.
+   * @return Calls the super toString method and appends the age property and class.
+   */
   @Override
   public String toString() {
     return super.toString() + ", age=" + age.getValue() + ", class=Mage";

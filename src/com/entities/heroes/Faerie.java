@@ -20,13 +20,19 @@ public class Faerie extends Hero implements Armable {
   private static final int MAX_INTELLIGENCE = 8;
   private static final int MAX_WISDOM = 9;
   private static final int MAX_CHARISMA = 10;
-
+  // MIN and MAX values for height
   private static final int MIN_HEIGHT = 1;
   private static final int MAX_HEIGHT = 10;
+  // Property specific to Faerie
+  private StatValue height; // This is the height of the faerie
 
-  private StatValue height;
-
+  /**
+   * This constructor initializes the Faerie object with the specified values.
+   * @param name The name of the faerie
+   * @param height The height of the faerie
+   */
   public Faerie(String name, int height) {
+    // Call the super constructor
     super(
       name,
       MIN_STRENGTH,
@@ -42,17 +48,30 @@ public class Faerie extends Hero implements Armable {
       MIN_CHARISMA,
       MAX_CHARISMA
     );
+    // Set the height property
     this.height = new StatValue("Height", height, MIN_HEIGHT, MAX_HEIGHT);
   }
 
+  /**
+   * This constructor initializes the Faerie object with default values.
+   */
   public Faerie() {
+    // Call the other constructor
     this("Faerie", MIN_HEIGHT);
   }
 
+  /**
+   * This method returns the height of the faerie.
+   * @return The height of the faerie
+   */
   public StatValue getHeight() {
     return height;
   }
 
+  /**
+   * This method sets the height of the faerie.
+   * @param height The height of the faerie
+   */
   public void setHeight(int height) {
     try {
       this.height.setValue(height);
@@ -61,11 +80,20 @@ public class Faerie extends Hero implements Armable {
     }
   }
 
+  /**
+   * This method allows an faerie to wield a weapon, but faeries are too small to wield weapons.
+   * @param weapon The weapon the faerie is wielding
+   * @return A string indicating the faerie cannot wield weapons
+   */
   @Override
   public String wieldWeapon(Weapon weapon) {
     return name + " cannot wield weapons because they are too small!";
   }
 
+  /**
+   * This method returns a string representation of the Faerie object.
+   * @return Calls the super toString method and appends the height property and class.
+   */
   @Override
   public String toString() {
     return (

@@ -19,10 +19,16 @@ public class Warrior extends Hero implements Armable {
   private static final int MAX_INTELLIGENCE = 5;
   private static final int MAX_WISDOM = 6;
   private static final int MAX_CHARISMA = 6;
+  // Property specific to Warrior
+  private boolean hasTransport; // This is whether the warrior has a mode of transport
 
-  private boolean hasTransport;
-
+  /**
+   * This constructor initializes the Warrior object with the specified values.
+   * @param name The name of the warrior
+   * @param hasTransport Whether the warrior has a mode of transport
+   */
   public Warrior(String name, boolean hasTransport) {
+    // Call the super constructor
     super(
       name,
       MIN_STRENGTH,
@@ -38,26 +44,47 @@ public class Warrior extends Hero implements Armable {
       MIN_CHARISMA,
       MAX_CHARISMA
     );
-    this.hasTransport = hasTransport;
+    this.hasTransport = hasTransport; // Set the hasTransport property
   }
 
+  /**
+   * This constructor initializes the Warrior object with default values.
+   */
   public Warrior() {
+    // Call the other constructor
     this("Warrior", false);
   }
 
+  /**
+   * This method returns whether the warrior has a mode of transport.
+   * @return A boolean indicating whether the warrior has a mode of transport
+   */
   public boolean getHasTransport() {
     return hasTransport;
   }
 
+  /**
+   * This method sets whether the warrior has a mode of transport.
+   * @param hasTransport A boolean indicating whether the warrior has a mode of transport
+   */
   public void setHasTransport(boolean hasTransport) {
     this.hasTransport = hasTransport;
   }
 
+  /**
+   * This method allows the warrior to wield a weapon.
+   * @param weapon The weapon to wield
+   * @return A string indicating the weapon the warrior is wielding
+   */
   @Override
   public String wieldWeapon(Weapon weapon) {
     return name + " is wielding " + weapon.getName();
   }
 
+  /**
+   * This method returns a string representation of the Warrior object.
+   * @return Calls the super toString method and appends the hasTransport property and class.
+   */
   @Override
   public String toString() {
     return (

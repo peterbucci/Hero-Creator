@@ -8,26 +8,34 @@ import java.util.ArrayList;
 
 public abstract class Monster extends Entity implements Armable {
 
-  // Health constants
-  private static final int BASE_HEALTH = 10;
-  private static final int HEALTH_PER_CONSTITUTION = 2;
-  private static final int MAX_HEALTH = 100;
+  /*
+   * I kept the follow properties in Monster class despite them being in the Entity class because
+   * it was in the instructions for this assignment. Realistically, I would have removed them from
+   * this class and used the ones in the Entity class.
+   */
+  protected String name; // This is the name of the monster
+  protected StatValue health; // This is the health of the monster
+  protected ArrayList<Weapon> weapons; // This is the list of weapons in the monster's possession
+  // Unique to Monster
+  protected String habitat; // This is the habitat the monster is found in
 
-  // Properties
-  private String id;
-  protected String name;
-  // Attributes
-  protected StatValue strength;
-  protected StatValue dexterity;
-  protected StatValue constitution;
-  protected StatValue intelligence;
-  protected StatValue wisdom;
-  protected StatValue charisma;
-  protected StatValue health;
-  // Weapons
-  protected ArrayList<Weapon> weapons;
-  protected String habitat;
-
+  /**
+   * This constructor initializes the Monster object with the specified values.
+   * @param name The name of the monster
+   * @param habitat The habitat the monster is found in
+   * @param minStrength The minimum strength value for the monster
+   * @param maxStrength The maximum strength value for the monster
+   * @param minDexterity The minimum dexterity value for the monster
+   * @param maxDexterity The maximum dexterity value for the monster
+   * @param minConstitution The minimum constitution value for the monster
+   * @param maxConstitution The maximum constitution value for the monster
+   * @param minIntelligence The minimum intelligence value for the monster
+   * @param maxIntelligence The maximum intelligence value for the monster
+   * @param minWisdom The minimum wisdom value for the monster
+   * @param maxWisdom The maximum wisdom value for the monster
+   * @param minCharisma The minimum charisma value for the monster
+   * @param maxCharisma The maximum charisma value for the monster
+   */
   public Monster(
     String name,
     String habitat,
@@ -44,182 +52,60 @@ public abstract class Monster extends Entity implements Armable {
     int minCharisma,
     int maxCharisma
   ) {
-    this.name = name;
-    this.weapons = new ArrayList<>();
-    this.strength =
-      new StatValue("Strength", minStrength, minStrength, maxStrength);
-    this.dexterity =
-      new StatValue("Dexterity", minDexterity, minDexterity, maxDexterity);
-    this.constitution =
-      new StatValue(
-        "Constitution",
-        minConstitution,
-        minConstitution,
-        maxConstitution
-      );
-    this.intelligence =
-      new StatValue(
-        "Intelligence",
-        minIntelligence,
-        minIntelligence,
-        maxIntelligence
-      );
-    this.wisdom = new StatValue("Wisdom", minWisdom, minWisdom, maxWisdom);
-    this.charisma =
-      new StatValue("Charisma", minCharisma, minCharisma, maxCharisma);
-    // Initialize health based on the constitution provided
-    this.health = new StatValue("Health", BASE_HEALTH, BASE_HEALTH, MAX_HEALTH);
-    updateHealth();
-    this.habitat = habitat;
+    // Call the super constructor
+    super(
+      name,
+      minStrength,
+      maxStrength,
+      minDexterity,
+      maxDexterity,
+      minConstitution,
+      maxConstitution,
+      minIntelligence,
+      maxIntelligence,
+      minWisdom,
+      maxWisdom,
+      minCharisma,
+      maxCharisma
+    );
+    this.habitat = habitat; // Set the habitat
   }
 
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    if (name == null || name.isEmpty()) {
-      throw new IllegalArgumentException("Name cannot be empty");
-    }
-    this.name = name;
-  }
-
-  public StatValue getStrength() {
-    return strength;
-  }
-
-  public void setStrength(int strength) {
-    try {
-      this.strength.setValue(strength);
-    } catch (IllegalArgumentException e) {
-      throw e;
-    }
-  }
-
-  public StatValue getDexterity() {
-    return dexterity;
-  }
-
-  public void setDexterity(int dexterity) {
-    try {
-      this.dexterity.setValue(dexterity);
-    } catch (IllegalArgumentException e) {
-      throw e;
-    }
-  }
-
-  public StatValue getConstitution() {
-    return constitution;
-  }
-
-  public void setConstitution(int constitution) {
-    try {
-      this.constitution.setValue(constitution);
-      updateHealth(); // Update health based on new constitution
-    } catch (IllegalArgumentException e) {
-      throw e;
-    }
-  }
-
-  public StatValue getIntelligence() {
-    return intelligence;
-  }
-
-  public void setIntelligence(int intelligence) {
-    try {
-      this.intelligence.setValue(intelligence);
-    } catch (IllegalArgumentException e) {
-      throw e;
-    }
-  }
-
-  public StatValue getWisdom() {
-    return wisdom;
-  }
-
-  public void setWisdom(int wisdom) {
-    try {
-      this.wisdom.setValue(wisdom);
-    } catch (IllegalArgumentException e) {
-      throw e;
-    }
-  }
-
-  public StatValue getCharisma() {
-    return charisma;
-  }
-
-  public void setCharisma(int charisma) {
-    try {
-      this.charisma.setValue(charisma);
-    } catch (IllegalArgumentException e) {
-      throw e;
-    }
-  }
-
-  public StatValue[] getStats() {
-    return new StatValue[] {
-      strength,
-      dexterity,
-      constitution,
-      intelligence,
-      wisdom,
-      charisma,
-    };
-  }
-
-  public StatValue getHealth() {
-    return health;
-  }
-
-  public void updateHealth() {
-    int newHealth =
-      BASE_HEALTH + constitution.getValue() * HEALTH_PER_CONSTITUTION;
-    try {
-      health.setValue(newHealth);
-    } catch (IllegalArgumentException e) {
-      throw e;
-    }
-  }
-
-  public ArrayList<Weapon> getWeapons() {
-    return weapons;
-  }
-
-  public void setWeapons(ArrayList<Weapon> weapons) {
-    this.weapons = weapons;
-  }
-
-  public void addWeapon(Weapon weapon) {
-    this.weapons.add(weapon);
-  }
-
+  /**
+   * This method allows the monster to wield a weapon.
+   * @param weapon The weapon the monster is wielding
+   */
   @Override
   public String wieldWeapon(Weapon weapon) {
     // Logic for wielding any weapon
     return name + "is wielding " + weapon.getName();
   }
 
+  /**
+   * This method gets the habitat of the monster.
+   * @return The habitat of the monster
+   */
   public String getHabitat() {
     return habitat;
   }
 
+  /**
+   * This method sets the habitat of the monster.
+   * @param habitat The habitat of the monster
+   */
   public void setHabitat(String habitat) {
+    // Validate the habitat
     if (habitat == null || habitat.isEmpty()) {
-      throw new IllegalArgumentException("Habitat cannot be empty");
+      throw new IllegalArgumentException("Habitat cannot be empty"); // Throw an exception if the habitat is empty
     }
 
-    this.habitat = habitat;
+    this.habitat = habitat; // Set the habitat
   }
 
+  /**
+   * This method returns a string representation of the Monster object.
+   * @return The name, type, strength, dexterity, constitution, intelligence, wisdom, charisma, health, and habitat of the monster.
+   */
   @Override
   public String toString() {
     return (

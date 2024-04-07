@@ -7,25 +7,32 @@ import java.util.ArrayList;
 
 public abstract class Hero extends Entity {
 
-  // Health constants
-  private static final int BASE_HEALTH = 10;
-  private static final int HEALTH_PER_CONSTITUTION = 2;
-  private static final int MAX_HEALTH = 100;
+  /**
+   * I kept the follow properties in Hero class despite them being in the Entity class because
+   * it was in the instructions for this assignment. Realistically, I would have removed them
+   * from this class and used the ones in the Entity class.
+   */
+  protected String name; // This is the name of the hero
+  protected StatValue strength; // This is the strength of the hero
+  protected StatValue health; // This is the health of the hero
+  protected ArrayList<Weapon> weapons; // This is the list of weapons in the hero's possession
 
-  // Properties
-  private String id;
-  protected String name;
-  // Attributes
-  protected StatValue strength;
-  protected StatValue dexterity;
-  protected StatValue constitution;
-  protected StatValue intelligence;
-  protected StatValue wisdom;
-  protected StatValue charisma;
-  protected StatValue health;
-  // Weapons
-  protected ArrayList<Weapon> weapons;
-
+  /**
+   * This constructor initializes the Hero object with the specified values.
+   * @param name The name of the hero
+   * @param minStrength The minimum strength value for the hero
+   * @param maxStrength The maximum strength value for the hero
+   * @param minDexterity The minimum dexterity value for the hero
+   * @param maxDexterity The maximum dexterity value for the hero
+   * @param minConstitution The minimum constitution value for the hero
+   * @param maxConstitution The maximum constitution value for the hero
+   * @param minIntelligence The minimum intelligence value for the hero
+   * @param maxIntelligence The maximum intelligence value for the hero
+   * @param minWisdom The minimum wisdom value for the hero
+   * @param maxWisdom The maximum wisdom value for the hero
+   * @param minCharisma The minimum charisma value for the hero
+   * @param maxCharisma The maximum charisma value for the hero
+   */
   public Hero(
     String name,
     int minStrength,
@@ -41,164 +48,27 @@ public abstract class Hero extends Entity {
     int minCharisma,
     int maxCharisma
   ) {
-    this.name = name;
-    this.weapons = new ArrayList<>();
-    this.strength =
-      new StatValue("Strength", minStrength, minStrength, maxStrength);
-    this.dexterity =
-      new StatValue("Dexterity", minDexterity, minDexterity, maxDexterity);
-    this.constitution =
-      new StatValue(
-        "Constitution",
-        minConstitution,
-        minConstitution,
-        maxConstitution
-      );
-    this.intelligence =
-      new StatValue(
-        "Intelligence",
-        minIntelligence,
-        minIntelligence,
-        maxIntelligence
-      );
-    this.wisdom = new StatValue("Wisdom", minWisdom, minWisdom, maxWisdom);
-    this.charisma =
-      new StatValue("Charisma", minCharisma, minCharisma, maxCharisma);
-    // Initialize health based on the constitution provided
-    this.health = new StatValue("Health", BASE_HEALTH, BASE_HEALTH, MAX_HEALTH);
-    updateHealth();
+    super(
+      name,
+      minStrength,
+      maxStrength,
+      minDexterity,
+      maxDexterity,
+      minConstitution,
+      maxConstitution,
+      minIntelligence,
+      maxIntelligence,
+      minWisdom,
+      maxWisdom,
+      minCharisma,
+      maxCharisma
+    );
   }
 
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    if (name == null || name.isEmpty()) {
-      throw new IllegalArgumentException("Name cannot be empty.");
-    }
-
-    this.name = name;
-  }
-
-  public StatValue getStrength() {
-    return strength;
-  }
-
-  public void setStrength(int strength) {
-    try {
-      this.strength.setValue(strength);
-    } catch (IllegalArgumentException e) {
-      throw e;
-    }
-  }
-
-  public StatValue getDexterity() {
-    return dexterity;
-  }
-
-  public void setDexterity(int dexterity) {
-    try {
-      this.dexterity.setValue(dexterity);
-    } catch (IllegalArgumentException e) {
-      throw e;
-    }
-  }
-
-  public StatValue getConstitution() {
-    return constitution;
-  }
-
-  public void setConstitution(int constitution) {
-    try {
-      this.constitution.setValue(constitution);
-      updateHealth(); // Update health based on new constitution
-    } catch (IllegalArgumentException e) {
-      throw e;
-    }
-  }
-
-  public StatValue getIntelligence() {
-    return intelligence;
-  }
-
-  public void setIntelligence(int intelligence) {
-    try {
-      this.intelligence.setValue(intelligence);
-    } catch (IllegalArgumentException e) {
-      throw e;
-    }
-  }
-
-  public StatValue getWisdom() {
-    return wisdom;
-  }
-
-  public void setWisdom(int wisdom) {
-    try {
-      this.wisdom.setValue(wisdom);
-    } catch (IllegalArgumentException e) {
-      throw e;
-    }
-  }
-
-  public StatValue getCharisma() {
-    return charisma;
-  }
-
-  public void setCharisma(int charisma) {
-    try {
-      this.charisma.setValue(charisma);
-    } catch (IllegalArgumentException e) {
-      throw e;
-    }
-  }
-
-  public StatValue[] getStats() {
-    return new StatValue[] {
-      strength,
-      dexterity,
-      constitution,
-      intelligence,
-      wisdom,
-      charisma,
-    };
-  }
-
-  public StatValue getHealth() {
-    return health;
-  }
-
-  public void updateHealth() {
-    int newHealth =
-      BASE_HEALTH + constitution.getValue() * HEALTH_PER_CONSTITUTION;
-    try {
-      health.setValue(newHealth);
-    } catch (IllegalArgumentException e) {
-      throw e;
-    }
-  }
-
-  public ArrayList<Weapon> getWeapons() {
-    return weapons;
-  }
-
-  public void setWeapons(ArrayList<Weapon> weapons) {
-    this.weapons = weapons;
-  }
-
-  public void addWeapon(Weapon weapon) {
-    this.weapons.add(weapon);
-  }
-
+  /**
+   * This method returns a string representation of the Hero object.
+   * @return The name, type, strength, dexterity, constitution, intelligence, wisdom, charisma, and health of the hero.
+   */
   @Override
   public String toString() {
     return (
