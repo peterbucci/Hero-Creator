@@ -1,7 +1,7 @@
 package com.entities.heroes;
 
-import com.Armable;
-import com.Weapon;
+import com.interfaces.Armable;
+import com.weapons.Weapon;
 
 public class Warrior extends Hero implements Armable {
 

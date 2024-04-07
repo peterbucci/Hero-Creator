@@ -1,8 +1,8 @@
 package com.entities.heroes;
 
-import com.StatValue;
-import com.Weapon;
 import com.entities.Entity;
+import com.stats.StatValue;
+import com.weapons.Weapon;
 import java.util.ArrayList;
 
 public abstract class Hero extends Entity {

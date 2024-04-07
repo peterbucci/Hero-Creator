@@ -1,4 +1,4 @@
-package com;
+package com.weapons;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package com;
+package com.ui;
 
 import com.entities.heroes.*;
 import javafx.geometry.Insets;

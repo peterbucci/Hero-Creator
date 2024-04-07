@@ -1,7 +1,7 @@
 package com.entities;
 
-import com.StatValue;
-import com.Weapon;
+import com.stats.StatValue;
+import com.weapons.Weapon;
 import java.util.ArrayList;
 
 public abstract class Entity implements Comparable<Entity> {

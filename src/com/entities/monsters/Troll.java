@@ -1,6 +1,6 @@
 package com.entities.monsters;
 
-import com.StatValue;
+import com.stats.StatValue;
 
 public class Troll extends Monster {
 

@@ -1,4 +1,4 @@
-package com;
+package com.ui;
 
 import com.entities.monsters.Ogre;
 import com.entities.monsters.Troll;

@@ -1,6 +1,9 @@
-package com;
+package com.ui;
 
+import com.charts.RadarChart;
 import com.entities.Entity;
+import com.stats.StatValue;
+import com.utils.CloseHandler;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.UUID;

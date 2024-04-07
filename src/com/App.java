@@ -8,6 +8,9 @@
 package com;
 
 import com.entities.Entity;
+import com.entities.EntityManager;
+import com.ui.CharacterSheet;
+import com.ui.EntityCreationForm;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

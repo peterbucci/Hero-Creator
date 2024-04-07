@@ -1,4 +1,4 @@
-package com;
+package com.stats;
 
 public class StatValue {
 

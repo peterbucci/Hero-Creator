@@ -1,5 +1,6 @@
-package com;
+package com.charts;
 
+import com.stats.StatValue;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.layout.Pane;

@@ -1,9 +1,9 @@
 package com.entities.monsters;
 
-import com.Armable;
-import com.StatValue;
-import com.Weapon;
 import com.entities.Entity;
+import com.interfaces.Armable;
+import com.stats.StatValue;
+import com.weapons.Weapon;
 import java.util.ArrayList;
 
 public abstract class Monster extends Entity implements Armable {

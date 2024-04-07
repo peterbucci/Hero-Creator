@@ -1,4 +1,4 @@
-package com;
+package com.ui;
 
 import javafx.scene.Node;
 import javafx.scene.Scene;

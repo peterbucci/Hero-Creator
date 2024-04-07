@@ -1,4 +1,4 @@
-package com;
+package com.weapons;
 
 public class Weapon {
 

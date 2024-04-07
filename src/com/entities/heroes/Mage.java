@@ -1,8 +1,8 @@
 package com.entities.heroes;
 
-import com.Armable;
-import com.StatValue;
-import com.Weapon;
+import com.interfaces.Armable;
+import com.stats.StatValue;
+import com.weapons.Weapon;
 
 public class Mage extends Hero implements Armable {
 

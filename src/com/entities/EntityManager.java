@@ -1,6 +1,5 @@
-package com;
+package com.entities;
 
-import com.entities.Entity;
 import com.entities.heroes.*;
 import com.entities.monsters.*;
 import java.io.File;
