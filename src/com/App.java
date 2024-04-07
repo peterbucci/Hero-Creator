@@ -20,19 +20,26 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 
+  // Constants for the width and height of the window
   private static final int WIDTH = 800;
   private static final int HEIGHT = 600;
-
+  // Entity manager to manage the entities
   private EntityManager entityManager;
 
+  /**
+   * Start the application.
+   * @param primaryStage The primary stage of the application
+   */
   @Override
   public void start(Stage primaryStage) {
-    primaryStage.setTitle("Fantasy Game");
+    primaryStage.setTitle("Fantasy Game"); // Set the title of the window
 
+    // Create a list view to display the entities
     ListView<String> entityListView = new ListView<>();
     entityManager = new EntityManager(entityListView);
-    entityManager.refreshEntityList();
+    entityManager.refreshEntityList(); // Refresh the list of entities
 
+    // Add a listener to the list view to show the details of the selected entity
     entityListView
       .getSelectionModel()
       .selectedItemProperty()
@@ -41,24 +48,38 @@ public class App extends Application {
         showEntityDetails(entityManager.findEntityById(selectedHeroId));
       });
 
+    /*
+     * Create a button to create a new entity. When the button is clicked, a new
+     * entity creation form is displayed.
+     */
     Button createEntityButton = new Button("Create Entity");
     createEntityButton.setOnAction(e -> {
       new EntityCreationForm(entityManager::refreshEntityList);
     });
 
+    // Create an HBox layout to display the list view and the create entity button
     HBox layout = new HBox(10);
     layout.getChildren().addAll(entityListView, createEntityButton);
 
+    // Create a scene with the layout and set it on the primary stage
     Scene scene = new Scene(layout, WIDTH, HEIGHT);
     primaryStage.setScene(scene);
     primaryStage.show();
   }
 
+  /**
+   * Show the details of an entity in a character sheet.
+   * @param entity Entity to show the details of
+   */
   private void showEntityDetails(Entity entity) {
     if (entity == null) return;
     new CharacterSheet(entity, entityManager.getEntities());
   }
 
+  /**
+   * Launch the application.
+   * @param args Command line arguments
+   */
   public static void main(String[] args) {
     launch(args);
   }
