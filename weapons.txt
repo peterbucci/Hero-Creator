@@ -1,0 +1,5 @@
+id=1f2a3b4c-name5d6e7f, name=FrostSpell, power=50, ability=Freeze, type=SPELL
+id=2a3b4c5d-6e7f1f2a, name=Dynamite, power=70, ability=Explode, type=EXPLOSIVE
+id=3b4c5d6e-7f1f2a3b, name=AncientStaff, power=60, ability=Heal, type=STAFF
+id=4c5d6e7f-1f2a3b4c, name=WarClub, power=65, ability=Stun, type=CUDGEL
+id=5d6e7f1f-2a3b4c5d, name=Shuriken, power=55, ability=Bleed, type=THROWING_DEVICE
