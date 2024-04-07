@@ -1,3 +1,8 @@
+package com;
+
+import com.entities.Entity;
+import com.entities.heroes.*;
+import com.entities.monsters.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

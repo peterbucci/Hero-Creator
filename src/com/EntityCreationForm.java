@@ -1,3 +1,5 @@
+package com;
+
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;

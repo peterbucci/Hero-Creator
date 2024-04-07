@@ -1,3 +1,6 @@
+package com;
+
+import com.entities.Entity;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.UUID;

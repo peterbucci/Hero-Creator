@@ -1,3 +1,7 @@
+package com.entities.monsters;
+
+import com.StatValue;
+
 public class Troll extends Monster {
 
   // MIN values for each attribute

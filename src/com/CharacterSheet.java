@@ -1,3 +1,6 @@
+package com;
+
+import com.entities.Entity;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.Scene;

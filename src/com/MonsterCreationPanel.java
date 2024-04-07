@@ -1,3 +1,7 @@
+package com;
+
+import com.entities.monsters.Ogre;
+import com.entities.monsters.Troll;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;

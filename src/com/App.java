@@ -4,6 +4,10 @@
  * @Date: 04/04/2024
  * @Description: This is the main class that launches the application.
  */
+
+package com;
+
+import com.entities.Entity;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

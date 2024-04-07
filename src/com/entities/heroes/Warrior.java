@@ -1,3 +1,8 @@
+package com.entities.heroes;
+
+import com.Armable;
+import com.Weapon;
+
 public class Warrior extends Hero implements Armable {
 
   // MIN values for each attribute

@@ -1,6 +1,11 @@
+package com.entities.heroes;
+
+import com.StatValue;
+import com.Weapon;
+import com.entities.Entity;
 import java.util.ArrayList;
 
-public abstract class Monster extends Entity implements Armable {
+public abstract class Hero extends Entity {
 
   // Health constants
   private static final int BASE_HEALTH = 10;
@@ -20,11 +25,9 @@ public abstract class Monster extends Entity implements Armable {
   protected StatValue health;
   // Weapons
   protected ArrayList<Weapon> weapons;
-  protected String habitat;
 
-  public Monster(
+  public Hero(
     String name,
-    String habitat,
     int minStrength,
     int maxStrength,
     int minDexterity,
@@ -64,7 +67,6 @@ public abstract class Monster extends Entity implements Armable {
     // Initialize health based on the constitution provided
     this.health = new StatValue("Health", BASE_HEALTH, BASE_HEALTH, MAX_HEALTH);
     updateHealth();
-    this.habitat = habitat;
   }
 
   public String getId() {
@@ -81,8 +83,9 @@ public abstract class Monster extends Entity implements Armable {
 
   public void setName(String name) {
     if (name == null || name.isEmpty()) {
-      throw new IllegalArgumentException("Name cannot be empty");
+      throw new IllegalArgumentException("Name cannot be empty.");
     }
+
     this.name = name;
   }
 
@@ -197,29 +200,11 @@ public abstract class Monster extends Entity implements Armable {
   }
 
   @Override
-  public String wieldWeapon(Weapon weapon) {
-    // Logic for wielding any weapon
-    return name + "is wielding " + weapon.getName();
-  }
-
-  public String getHabitat() {
-    return habitat;
-  }
-
-  public void setHabitat(String habitat) {
-    if (habitat == null || habitat.isEmpty()) {
-      throw new IllegalArgumentException("Habitat cannot be empty");
-    }
-
-    this.habitat = habitat;
-  }
-
-  @Override
   public String toString() {
     return (
       "name=" +
       name +
-      ", type=Monster" +
+      ", type=Hero" +
       ", strength=" +
       strength.getValue() +
       ", dexterity=" +
@@ -233,9 +218,7 @@ public abstract class Monster extends Entity implements Armable {
       ", charisma=" +
       charisma.getValue() +
       ", health=" +
-      health.getValue() +
-      ", habitat=" +
-      habitat
+      health.getValue()
     );
   }
 }

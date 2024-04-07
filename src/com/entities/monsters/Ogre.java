@@ -1,3 +1,5 @@
+package com.entities.monsters;
+
 public class Ogre extends Monster {
 
   // MIN values for each attribute

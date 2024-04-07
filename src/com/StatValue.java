@@ -1,3 +1,5 @@
+package com;
+
 public class StatValue {
 
   public static final StatValue[] DEFAULT_VALUES = {

@@ -1,3 +1,5 @@
+package com;
+
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;

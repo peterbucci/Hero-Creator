@@ -1,3 +1,5 @@
+package com;
+
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.layout.Pane;

@@ -1,3 +1,9 @@
+package com.entities.heroes;
+
+import com.Armable;
+import com.StatValue;
+import com.Weapon;
+
 public class Faerie extends Hero implements Armable {
 
   // MIN values for each attribute

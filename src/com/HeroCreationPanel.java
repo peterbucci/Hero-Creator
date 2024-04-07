@@ -1,3 +1,6 @@
+package com;
+
+import com.entities.heroes.*;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
