@@ -1,4 +1,4 @@
-package com.utils;
+package com.interfaces;
 
 // Interface for handling the closing of a window
 public interface CloseHandler {
