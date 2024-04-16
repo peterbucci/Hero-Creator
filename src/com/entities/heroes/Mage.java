@@ -88,7 +88,7 @@ public class Mage extends Hero implements Armable {
   @Override
   public String wieldWeapon(Weapon weapon) {
     if (weapon.getType() == Weapon.Type.SPELL) {
-      return name + " wielding " + weapon.getName();
+      return name + " is wielding " + weapon.getName();
     } else {
       return (
         name + " cannot wield " + weapon.getName() + " as it is not a spell."

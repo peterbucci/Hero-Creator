@@ -1,21 +1,8 @@
 package com.entities.heroes;
 
 import com.entities.Entity;
-import com.stats.StatValue;
-import com.weapons.Weapon;
-import java.util.ArrayList;
 
 public abstract class Hero extends Entity {
-
-  /**
-   * I kept the follow properties in Hero class despite them being in the Entity class because
-   * it was in the instructions for this assignment. Realistically, I would have removed them
-   * from this class and used the ones in the Entity class.
-   */
-  protected String name; // This is the name of the hero
-  protected StatValue strength; // This is the strength of the hero
-  protected StatValue health; // This is the health of the hero
-  protected ArrayList<Weapon> weapons; // This is the list of weapons in the hero's possession
 
   /**
    * This constructor initializes the Hero object with the specified values.

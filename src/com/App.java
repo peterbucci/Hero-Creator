@@ -2,7 +2,11 @@
  * @Author: Peter Bucci
  * @Filename: App.java
  * @Date: 04/04/2024
- * @Description: This is the main class that launches the application.
+ * @Description: This application allows the user to create and manage entities for a fantasy game.
+ * The user can create new entities, view the details of an entity, and edit the attributes of an entity.
+ * The application uses JavaFX for the user interface and stores the entities in a txt file.
+ *
+ * Add the weapons.txt file to the root directory of the project to load the weapons data.
  */
 
 package com;

@@ -2,3 +2,7 @@ id=ac61f332-cd6b-4d64-b858-0b17bff90258, name=Damon, type=Monster, strength=6, d
 id=b4ebc654-89b2-4252-a9af-e1351429b67f, name=Peter, type=Monster, strength=5, dexterity=3, constitution=6, intelligence=2, wisdom=1, charisma=1, health=22, habitat=Swamp, height=7, class=Troll
 id=1a5270da-e4d0-445f-8f3b-c37f98fc32b8, name=Michael, type=Hero, strength=1, dexterity=2, constitution=2, intelligence=8, wisdom=4, charisma=3, health=14, age=22, class=Mage
 id=86aeb44c-22d6-49b6-9e9f-0cd56fd53849, name=Oooga, type=Monster, strength=6, dexterity=2, constitution=7, intelligence=1, wisdom=2, charisma=1, health=24, habitat=Swamp, hasScales=false, class=Ogre
+id=2a573612-bde7-4bb7-98c0-a78b9538ec50, name=Andrew, type=Hero, strength=1, dexterity=2, constitution=2, intelligence=8, wisdom=4, charisma=3, health=14, age=18, class=Mage
+id=8ea7a4c2-9a9a-4fa1-851a-5e7be64254e6, name=Megan, type=Hero, strength=1, dexterity=7, constitution=2, intelligence=5, wisdom=6, charisma=6, health=14, height=8, class=Faerie
+id=d850beb5-ea52-4118-bfb1-eb7757d040d5, name=Bruna, type=Hero, strength=1, dexterity=9, constitution=5, intelligence=8, wisdom=6, charisma=6, health=20, height=7, class=Faerie
+id=176644d9-ddb2-401c-8f28-3130da03a94e, name=Alex, type=Hero, strength=9, dexterity=7, constitution=6, intelligence=1, wisdom=2, charisma=2, health=22, hasTransport=true, class=Warrior

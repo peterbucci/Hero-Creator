@@ -1,10 +1,14 @@
 package com.ui;
 
 import com.entities.Entity;
+import com.weapons.Weapon;
+import com.weapons.WeaponLoader;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -76,9 +80,79 @@ public class CharacterSheet {
       .getChildren()
       .addAll(comparisons.stream().map(Label::new).toArray(Label[]::new));
 
+    // Create a button to add all the weapons to the entity
+    Button addWeapons = new Button("Collect Weapons");
+    // Set the action for the button when clicked loading the weapons from a file and add them to the entity
+    addWeapons.setOnAction(e -> {
+      ArrayList<Weapon> weapons = WeaponLoader.loadWeapons("weapons.txt");
+      entity.setWeapons(weapons);
+
+      // display a popup message when the weapons are added
+      Stage popup = new Stage();
+      popup.initModality(Modality.APPLICATION_MODAL);
+      popup.setTitle("Weapons Collected");
+      VBox popupLayout = new VBox(10);
+      popupLayout
+        .getChildren()
+        .add(
+          new Label("Weapons added to " + entity.getName() + "'s inventory")
+        );
+      Scene popupScene = new Scene(popupLayout, 200, 100);
+      popup.setScene(popupScene);
+      popup.show();
+    });
+
+    // Create a button to show the inventory of the entity
+    Button showInventory = new Button("Show Inventory");
+    // Set the action for the button when clicked showing the inventory of the entity
+    showInventory.setOnAction(e -> showInventory());
+
+    // Add the button to the layout
+    layout.getChildren().addAll(addWeapons, showInventory);
+
     // Create a new scene with the layout and set the scene on the stage
     Scene scene = new Scene(layout, 300, 250);
     stage.setScene(scene);
     stage.show();
+  }
+
+  private void showInventory() {
+    // Create a new stage for the inventory
+    Stage inventoryStage = new Stage();
+    inventoryStage.initModality(Modality.APPLICATION_MODAL);
+    inventoryStage.setTitle("Inventory");
+
+    // Create a VBox layout to hold the inventory information
+    VBox layout = new VBox(10);
+    layout.getChildren().add(new Label("Inventory:"));
+
+    // List the weapons of the entity
+    for (Weapon weapon : entity.getWeapons()) {
+      Button equipButton = new Button("Equip");
+      Label weaponLabel = new Label(weapon.getName());
+      HBox weaponBox = new HBox(10);
+      weaponBox.getChildren().addAll(weaponLabel, equipButton);
+
+      // Set the action for the equip button when clicked
+      equipButton.setOnAction(e -> {
+        String message = entity.wieldWeapon(weapon);
+        // Display a popup message when the weapon is equipped
+        Stage popup = new Stage();
+        popup.initModality(Modality.APPLICATION_MODAL);
+        popup.setTitle("Message");
+        VBox popupLayout = new VBox(10);
+        popupLayout.getChildren().add(new Label(message));
+        Scene popupScene = new Scene(popupLayout, 200, 100);
+        popup.setScene(popupScene);
+        popup.show();
+      });
+
+      layout.getChildren().add(weaponBox);
+    }
+
+    // Create a new scene with the layout and set the scene on the stage
+    Scene scene = new Scene(layout, 200, 200);
+    inventoryStage.setScene(scene);
+    inventoryStage.show();
   }
 }

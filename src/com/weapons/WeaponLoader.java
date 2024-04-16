@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -15,8 +14,8 @@ public class WeaponLoader {
    * @param filename Name of the file to load weapons from
    * @return List of weapons loaded from the file
    */
-  public static List<Weapon> loadWeapons(String filename) {
-    List<Weapon> weapons = new ArrayList<>(); // Create a new list of weapons
+  public static ArrayList<Weapon> loadWeapons(String filename) {
+    ArrayList<Weapon> weapons = new ArrayList<>(); // Create a new list of weapons
     File file = new File(filename); // Create a new file object
 
     /*

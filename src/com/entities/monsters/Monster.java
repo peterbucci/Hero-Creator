@@ -2,21 +2,10 @@ package com.entities.monsters;
 
 import com.entities.Entity;
 import com.interfaces.Armable;
-import com.stats.StatValue;
 import com.weapons.Weapon;
-import java.util.ArrayList;
 
 public abstract class Monster extends Entity implements Armable {
 
-  /*
-   * I kept the follow properties in Monster class despite them being in the Entity class because
-   * it was in the instructions for this assignment. Realistically, I would have removed them from
-   * this class and used the ones in the Entity class.
-   */
-  protected String name; // This is the name of the monster
-  protected StatValue health; // This is the health of the monster
-  protected ArrayList<Weapon> weapons; // This is the list of weapons in the monster's possession
-  // Unique to Monster
   protected String habitat; // This is the habitat the monster is found in
 
   /**
@@ -78,7 +67,7 @@ public abstract class Monster extends Entity implements Armable {
   @Override
   public String wieldWeapon(Weapon weapon) {
     // Logic for wielding any weapon
-    return name + "is wielding " + weapon.getName();
+    return this.name + " is wielding " + weapon.getName();
   }
 
   /**

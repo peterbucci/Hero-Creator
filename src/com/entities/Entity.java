@@ -330,6 +330,8 @@ public abstract class Entity implements Comparable<Entity> {
     this.weapons.add(weapon);
   }
 
+  public abstract String wieldWeapon(Weapon weapon);
+
   /**
    * This method gets the minimum value for strength.
    * @return The minimum value for strength.
